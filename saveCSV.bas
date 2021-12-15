@@ -3,7 +3,7 @@ Sub saveCSV()
 Dim SavingPath As String
 Dim UniqueNameBit As String
 
-SavingPath = "X:\Bet Tribe\Trading\Risk Uploads\Football\OPTA Combined"
+SavingPath = "X:\Bet Tribe\Trading\Risk Uploads\Football\OPTA Combined" 'this file path needs to be changed if you want to save elsewhere
 
 Application.ScreenUpdating = False
 Application.DisplayAlerts = False
@@ -14,7 +14,7 @@ ActiveWorkbook.Sheets("3").Visible = True
     
     Sheets("2").Activate
     Sheets("2").Cells.Select
-    Selection.AutoFilter Field:=38, Criteria1:="Export"
+    Selection.AutoFilter Field:=38, Criteria1:="Export" 'export criteria can be changed in the '2' sheet
        Range("A1").Select
     Sheets("2").Range(Selection, Selection.End(xlDown)).Select
     Sheets("2").Range(Selection, Selection.End(xlToRight)).Select
@@ -28,10 +28,12 @@ ActiveWorkbook.Sheets("3").Visible = True
     ActiveWorkbook.SaveAs Filename:="C:\CSV\CombinedMarkets.csv", FileFormat:=xlCSV, _
         CreateBackup:=False
     ActiveWindow.Close
+    
+    'change the 'CombinedMarkets' naming here if you want to rename how the CSV saves
 
     Sheets("3").Activate
     Sheets("3").Cells.Select
-    Selection.AutoFilter Field:=29, Criteria1:="Export"
+    Selection.AutoFilter Field:=29, Criteria1:="Export" 'export criteria can be changed in the '3' sheet
        Range("A1").Select
     Sheets("3").Range(Selection, Selection.End(xlDown)).Select
     Sheets("3").Range(Selection, Selection.End(xlToRight)).Select
@@ -51,6 +53,9 @@ ActiveWorkbook.Sheets("3").Visible = True
     ActiveWorkbook.SaveAs Filename:="C:\CSV\CombinedSelections.csv", FileFormat:=xlCSV, _
         CreateBackup:=False
     ActiveWindow.Close
+    
+     'change the 'CombinedSelections' naming here if you want to rename how the CSV saves
+    
     
     Sheets("3").Activate
     With Sheets("3")
@@ -73,7 +78,7 @@ MsgBox ("CSVs have been saved")
 Sheets("Match Setup").Activate
 
 Dim saveString As String
-        saveString = "X:\Bet Tribe\Trading\Risk Uploads\Football\OPTA Combined\" & Sheets("Match Setup").Range("V3") & ".xlsm"
+        saveString = "X:\Bet Tribe\Trading\Risk Uploads\Football\OPTA Combined\" & Sheets("Match Setup").Range("V3") & ".xlsm" 'reference to cell V3 is the event name - make sure this stays in that cell or the file will save blank
         ActiveWorkbook.SaveAs Filename:=saveString
 
 MsgBox ("Saved To Risk Uploads")

@@ -3,7 +3,7 @@ Public Sub CommandButton3_Click()
 
 Dim rowCount As Integer: rowCount = 1
 
-Do Until Range("Shots_Selections_1").Cells(rowCount, 1) = ""
+Do Until Range("Shots_Selections_1").Cells(rowCount, 1) = "" 'do until the last cell in the row is blank
 
 Select Case Range("Shots_Selection_Count").Cells(rowCount, 1)
 
@@ -19,6 +19,8 @@ Select Case Range("Shots_Selection_Count").Cells(rowCount, 1)
         Range("Shots_Selection_Names").Cells(rowCount, 1) = Range("Shots_Selections_1").Cells(rowCount, 1) & " and " & Range("Shots_Selections_2").Cells(rowCount, 1) & " to have " & Range("Shots_Combinations").Cells(rowCount, 1) & " shots on target between them"
     Case Else
         Range("Shots_Selection_Names").Cells(rowCount, 1) = ""
+        
+    'the above code sets the selection naming logic depending on the number of players in the selection. If changing make sure the position of commars and '&' are updated.
     
     End Select
     
@@ -37,7 +39,7 @@ Dim selectionRow As Integer: selectionRow = 1
 ThisWorkbook.Worksheets("Shots Selections").Unprotect
 Application.ScreenUpdating = False
 
-Do Until selectionRow = 50
+Do Until selectionRow = 50 'executes until the 50th row, but need to change this if the sheet has more lines added
 
     If Range("Shots_Selection_Names").Cells(selectionRow, 1) <> "" Then
     
@@ -62,6 +64,8 @@ Do Until selectionRow = 50
         Range("Shots_True_Prices").Cells(selectionRow, 1).Locked = True
         Range("Shots_Offer_Prices").Cells(selectionRow, 1).Locked = True
         Range("Shots_Selection_Names").Cells(selectionRow, 1).Locked = True
+        
+    'the above code locks each named range, if more column are added then additional lines of code will need to be added in the same format to protect them
         
     Else
        
